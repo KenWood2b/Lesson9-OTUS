@@ -24,7 +24,7 @@ namespace Components
             _jumpTimer = new TimerRandomDelay(_minDelayJump, maxDelay, Time.fixedDeltaTime);
         }
 
-        private void FixedUpdate()
+        public override void OnFixedUpdate()
         {
             /*
              * В случае если расстояние до цели больше чем _minLenghtJump

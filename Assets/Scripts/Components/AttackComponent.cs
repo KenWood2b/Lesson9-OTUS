@@ -17,7 +17,7 @@ namespace Components
 
         #region NewFunctionality
 
-        [SerializeField] private AnimatorTriggerBase _animatorTrigger;
+        [SerializeField] private MeleeAttackAnimatorTrigger _animatorTrigger;
         [SerializeField] private WeaponBase _weaponComponent;
 
         private bool _attackRequested;

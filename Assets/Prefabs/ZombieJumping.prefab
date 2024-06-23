@@ -721,6 +721,7 @@ GameObject:
   - component: {fileID: 2775153310978724654}
   - component: {fileID: 6850862611041354261}
   - component: {fileID: 7820106721229642940}
+  - component: {fileID: 7267633236138386865}
   - component: {fileID: 2226293674973985582}
   - component: {fileID: 1591504385738681036}
   - component: {fileID: 4011801024897549974}
@@ -800,6 +801,30 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 5064371106927666849}
+          m_TargetAssemblyTypeName: Game.Engine.MeleeWeaponComponent, Assembly-CSharp
+          m_MethodName: Attack
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &7267633236138386865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2768417420739531338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 665c7b7c2a49f774f835b5ee9c94985b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2226293674973985582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1415,6 +1440,8 @@ GameObject:
   - component: {fileID: 1564730622046410021}
   - component: {fileID: 3874576737439649922}
   - component: {fileID: 530933651808130340}
+  - component: {fileID: 5064371106927666849}
+  - component: {fileID: 1207435039643506288}
   - component: {fileID: 8940084062081650966}
   - component: {fileID: 802682421897227549}
   - component: {fileID: 16647844846866064}
@@ -1427,7 +1454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1564730622046410021
 Transform:
   m_ObjectHideFlags: 0
@@ -1492,6 +1519,38 @@ MonoBehaviour:
   _zombiCollider: {fileID: 4135896952737180509}
   moveComponent: {fileID: 4304584068946733495}
   _rb: {fileID: 3874576737439649922}
+--- !u!114 &5064371106927666849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6341554486294221491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6e973bd8aa8eb04b92c2c2e95535e98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  meleePoint: {fileID: 2775153310978724654}
+  meleeRadius: 0.65
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &1207435039643506288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6341554486294221491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e87d0f2d732141f9a719f3050590e024, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animatorTrigger: {fileID: 7267633236138386865}
+  _weaponComponent: {fileID: 5064371106927666849}
 --- !u!114 &8940084062081650966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1506,7 +1565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyTransform: {fileID: 0}
   _zombieTransform: {fileID: 2775153310978724654}
-  _attackDistance: 1.1
+  _attackDistance: 0.85
 --- !u!114 &802682421897227549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1889,7 +1948,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.35
+  m_Radius: 0.25
   m_Height: 1.75
   m_Direction: 1
   m_Center: {x: 0, y: 0.93, z: 0.012163778}

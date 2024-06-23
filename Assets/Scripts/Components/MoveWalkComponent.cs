@@ -7,6 +7,8 @@ namespace Components
     {
         //public bool IsMoving => MoveDirection != Vector3.zero;
         public override bool IsWalking => MoveDirection != Vector3.zero;
+
+       
     }
 }
 

@@ -15,15 +15,18 @@ namespace Game.Content
         [SerializeField] private MoveComponentBase moveComponent;
         [SerializeField] private Rigidbody _rb;
         private bool isAlive;
+       
 
         /* FixedUpdate()
          * При наступление смерти Zombie ZombieController, AimComponent и SmoothRotateAction должны перестать работать
          * SmoothRotateAction.RotateTowards должен использовать для вращения Zombie только если есть цель (направление) вращения
          */
+
         private void Start()
         {
             isAlive = true;
             _zombiCollider.enabled = true;
+
         }
 
         private void OnEnable()

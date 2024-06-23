@@ -14,6 +14,10 @@ namespace Components
         }
 
         public abstract bool IsWalking { get; }
+        public virtual void OnFixedUpdate()
+        {
+
+        }
        
     }
 }

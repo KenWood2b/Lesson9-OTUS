@@ -26,6 +26,8 @@ namespace Game.Engine
         private AimComponent _myRotateComponent;
         private HealthComponent _enemyHealthComponent;
         private AttackComponent _attackComponent;
+        private bool _notAttak;
+        private float _distance;
 
         private void Awake()
         {
@@ -33,6 +35,7 @@ namespace Game.Engine
             _myRotateComponent = this.GetComponent<AimComponent>();
             _enemyHealthComponent = _enemyTransform.GetComponentInParent<HealthComponent>();
             _attackComponent = GetComponent<AttackComponent>();
+
         }
 
         public void OnFixedUpdate()
@@ -46,7 +49,7 @@ namespace Game.Engine
             }
 
             var directionToTarget = GetDirectionToTarget();
-            
+            _distance = directionToTarget.magnitude;
             if (directionToTarget.magnitude > this._attackDistance)
             {
                 TryCatchEnemy(directionToTarget);
@@ -72,6 +75,7 @@ namespace Game.Engine
         private void IdleState()
         {
             _state = ZombieState.IDLE;
+            InfoPanel.Instance.SetZombiStatus(_state.ToString());
             _myMoveComponent.MoveDirection = Vector3.zero;
             _myRotateComponent.SetDirection(_zombieTransform.forward);
             _attackComponent.SetRequiredAttack(false);
@@ -80,19 +84,24 @@ namespace Game.Engine
         private void TryCatchEnemy(Vector3 moveDirection)
         {
            
-            
             _state = ZombieState.TryCatchEnemy;
+            InfoPanel.Instance.SetZombiStatus(_state.ToString());
             _myMoveComponent.MoveDirection = moveDirection;
             _myRotateComponent.SetDirection(moveDirection);
             _attackComponent.SetRequiredAttack(false);
+            _myMoveComponent.OnFixedUpdate();
+            
+
 
         }
 
         private void AttackEnemy(Vector3 moveDirection)
         {
+
             if (_state != ZombieState.AttackEnemy)
             {
                 _state = ZombieState.AttackEnemy;
+                InfoPanel.Instance.SetZombiStatus(_state.ToString());
                 _myMoveComponent.MoveDirection = Vector3.zero;
                 _myRotateComponent.SetDirection(_zombieTransform.forward);
 

@@ -26,7 +26,7 @@ namespace Components
             _teleportTimer = new TimerRandomDelay(_minDelayTeleport, maxDelay, Time.fixedDeltaTime);
         }
 
-        private void FixedUpdate()
+        public override void OnFixedUpdate()
         {
             if (_isTeleporting) return;
 
